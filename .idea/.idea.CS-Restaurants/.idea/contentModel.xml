@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Adrien\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Adrien\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_CS-Restaurants.1564332530.00" t="ExcludeRecursive" />
+    <e p="D:\PERSO\EPSI\B3_(2019-2020)\DotNet\CS-Restaurants" t="IncludeFlat">
+      <e p="CS-Restaurants" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CS-Restaurants.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="CS-Restaurants.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="CS-Restaurants.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Testing" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Testing.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Testing.csproj" t="IncludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
