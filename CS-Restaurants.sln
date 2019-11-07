@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Query", "App.Query\App.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS-Restaurants", "CS-Restaurants\CS-Restaurants.csproj", "{8BB273A8-762B-4ACE-9CB3-A00C5A0DA23D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Query.Test", "App.Query.Test\App.Query.Test.csproj", "{5EB21713-AD52-4EE4-83ED-ACF4105A8B80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{8BB273A8-762B-4ACE-9CB3-A00C5A0DA23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BB273A8-762B-4ACE-9CB3-A00C5A0DA23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BB273A8-762B-4ACE-9CB3-A00C5A0DA23D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EB21713-AD52-4EE4-83ED-ACF4105A8B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EB21713-AD52-4EE4-83ED-ACF4105A8B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EB21713-AD52-4EE4-83ED-ACF4105A8B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EB21713-AD52-4EE4-83ED-ACF4105A8B80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
