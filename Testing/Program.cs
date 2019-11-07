@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using App.Query;
 
+
 namespace Testing
 {
     class Program
@@ -13,15 +14,10 @@ namespace Testing
         /// Entry point of the test program
         /// </summary>
         static void Main()
-        {
-            foreach (var s in NumberFilter.GetNombreDeviceTwoThree(originalList))
-            {
-                Console.WriteLine(s * 2);
-            }
-
-            Console.WriteLine();
-            var d = int.Parse(Console.ReadLine() ?? throw new NoNullAllowedException());
-            foreach (var c in NumberFilter.GetNumberDivider(originalList, d))
+        {   
+            var diviseur1 = int.Parse(Console.ReadLine() ?? throw new NoNullAllowedException());
+            var diviseur2 = int.Parse(Console.ReadLine() ?? throw new NoNullAllowedException());
+            foreach (var c in originalList.GetNumberDivider(diviseur1).GetNumberDivider(diviseur1))
             {
                 Console.WriteLine(c);
             }
