@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Testing
+namespace App.Query
 {
-    public class Utils
+    public class NumberFilter
     {
         /// <summary>
         /// Retruen the number in a list that are dividable by 2 and 3

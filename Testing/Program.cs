@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data;
+using App.Query;
 
 namespace Testing
 {
@@ -8,16 +9,19 @@ namespace Testing
     {
         public static List<int> originalList = new List<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
-        static void Main(string[] args)
+        /// <summary>
+        /// Entry point of the test program
+        /// </summary>
+        static void Main()
         {
-            foreach (var s in Utils.GetNombreDeviceTwoThree(originalList))
+            foreach (var s in NumberFilter.GetNombreDeviceTwoThree(originalList))
             {
                 Console.WriteLine(s * 2);
             }
 
             Console.WriteLine();
-            var d = int.Parse(Console.ReadLine());
-            foreach (var c in Utils.GetNumberDivider(originalList, d))
+            var d = int.Parse(Console.ReadLine() ?? throw new NoNullAllowedException());
+            foreach (var c in NumberFilter.GetNumberDivider(originalList, d))
             {
                 Console.WriteLine(c);
             }
