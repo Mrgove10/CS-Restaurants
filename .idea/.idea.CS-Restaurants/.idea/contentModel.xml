@@ -29,6 +29,7 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Testing.csproj" t="IncludeRecursive" />
+        <e p="Utils.cs" t="Include" />
       </e>
     </e>
   </component>
