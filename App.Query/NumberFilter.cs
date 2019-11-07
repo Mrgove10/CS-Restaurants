@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -5,7 +6,6 @@ namespace App.Query
 {
     public static class NumberFilter
     {
-
         /// <summary>
         /// Returns a list od element that are divible by the given divided in the given list
         /// </summary>
