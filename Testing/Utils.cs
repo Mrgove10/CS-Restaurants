@@ -5,10 +5,25 @@ namespace Testing
 {
     public class Utils
     {
-        public static IEnumerable<int> GetNombrePair(IEnumerable<int> list)
+        /// <summary>
+        /// Retruen the number in a list that are dividable by 2 and 3
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static IEnumerable<int> GetNombreDeviceTwoThree(IEnumerable<int> list)
         {
-            IEnumerable<int> evenList = list.Where(i => i % 2 == 0 && i % 3 == 0);
-            return evenList;
+            return list.Where(i => i % 2 == 0 && i % 3 == 0);
+        }
+
+        /// <summary>
+        /// Returns a list od element that are divible by the given divided in the given list
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="divider"></param>
+        /// <returns></returns>
+        public static IEnumerable<int> GetNumberDivider(IEnumerable<int> list, int divider)
+        {
+            return list.Where(i => i % divider == 0);
         }
     }
 }
