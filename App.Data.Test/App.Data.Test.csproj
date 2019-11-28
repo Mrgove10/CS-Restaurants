@@ -15,10 +15,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Ressources\restaurants.net.json" />
-      <Resource Include="Ressources\restaurants.net.json">
+      <None Update="Ressources\restaurants.net.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Resource>
+      </None>
     </ItemGroup>
 
 </Project>
