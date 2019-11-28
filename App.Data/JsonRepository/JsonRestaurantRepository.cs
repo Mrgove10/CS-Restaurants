@@ -24,7 +24,8 @@ namespace App.Data.JsonRepository
         /// <param name="path"></param>
         public void WriteFile(List<Restaurant> listRestaurants, string path)
         {
-            
+            var serialized = JsonSerializer.Serialize(listRestaurants);
+            File.WriteAllText(path, serialized);
         }
     }
 }

@@ -21,9 +21,13 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Class1.cs" t="Include" />
         <e p="JsonRepository" t="Include">
+          <e p="JsonDoubleToDateTime.cs" t="Include" />
           <e p="JsonRestaurantRepository.cs" t="Include" />
         </e>
         <e p="Model" t="Include">
+          <e p="Address.cs" t="Include" />
+          <e p="e.cs" t="Include" />
+          <e p="Grade.cs" t="Include" />
           <e p="Restaurant.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
