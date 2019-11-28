@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS-Restaurants", "CS-Restau
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Query.Test", "App.Query.Test\App.Query.Test.csproj", "{81DCCA6D-CD40-415C-9AEF-2C29FC41404D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Data", "App.Data\App.Data.csproj", "{4701BA71-8B48-4B89-A2F8-4733E908EAF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Data.Test", "App.Data.Test\App.Data.Test.csproj", "{A1425774-6BB2-4629-9AB4-22F71BFD117B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{81DCCA6D-CD40-415C-9AEF-2C29FC41404D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81DCCA6D-CD40-415C-9AEF-2C29FC41404D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81DCCA6D-CD40-415C-9AEF-2C29FC41404D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4701BA71-8B48-4B89-A2F8-4733E908EAF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4701BA71-8B48-4B89-A2F8-4733E908EAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4701BA71-8B48-4B89-A2F8-4733E908EAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4701BA71-8B48-4B89-A2F8-4733E908EAF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1425774-6BB2-4629-9AB4-22F71BFD117B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1425774-6BB2-4629-9AB4-22F71BFD117B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1425774-6BB2-4629-9AB4-22F71BFD117B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1425774-6BB2-4629-9AB4-22F71BFD117B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
