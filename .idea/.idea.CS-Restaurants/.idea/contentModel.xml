@@ -17,18 +17,23 @@
     <e p="C:\Users\Adrien\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_CS-Restaurants.1564332530.00" t="ExcludeRecursive" />
     <e p="D:\PERSO\EPSI\B3_(2019-2020)\DotNet\CS-Restaurants" t="IncludeFlat">
       <e p="App.Data" t="IncludeRecursive">
+        <e p="Animals" t="Include">
+          <e p="Animal.cs" t="Include" />
+          <e p="Cat.cs" t="Include" />
+          <e p="Dog.cs" t="Include" />
+        </e>
         <e p="App.Data.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Class1.cs" t="Include" />
         <e p="JsonRepository" t="Include">
           <e p="JsonDoubleToDateTime.cs" t="Include" />
           <e p="JsonRestaurantRepository.cs" t="Include" />
         </e>
         <e p="Model" t="Include">
           <e p="Address.cs" t="Include" />
-          <e p="e.cs" t="Include" />
+          <e p="Coord.cs" t="Include" />
           <e p="Grade.cs" t="Include" />
           <e p="Restaurant.cs" t="Include" />
+          <e p="RestaurantContext.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -37,6 +42,7 @@
             </e>
           </e>
         </e>
+        <e p="RestauDB.db" t="Include" />
       </e>
       <e p="App.Data.Test" t="IncludeRecursive">
         <e p="App.Data.Test.csproj" t="IncludeRecursive" />
@@ -52,6 +58,7 @@
         <e p="Ressources" t="Include">
           <e p="restaurants.net.json" t="Include" />
         </e>
+        <e p="SqlTest.cs" t="Include" />
       </e>
       <e p="App.Query" t="IncludeRecursive">
         <e p="App.Query.csproj" t="IncludeRecursive" />
@@ -93,6 +100,105 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Testing.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="WebApplication" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="HomeController.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="ErrorViewModel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="WebApplication.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Home" t="Include">
+            <e p="Index.cshtml" t="Include" />
+            <e p="Privacy.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="WebApplication.csproj" t="IncludeRecursive" />
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include">
+            <e p="site.css" t="Include" />
+          </e>
+          <e p="favicon.ico" t="Include" />
+          <e p="js" t="Include">
+            <e p="site.js" t="Include" />
+          </e>
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p="dist" t="Include">
+                <e p="css" t="Include">
+                  <e p="bootstrap-grid.css" t="Include" />
+                  <e p="bootstrap-grid.css.map" t="Include" />
+                  <e p="bootstrap-grid.min.css" t="Include" />
+                  <e p="bootstrap-grid.min.css.map" t="Include" />
+                  <e p="bootstrap-reboot.css" t="Include" />
+                  <e p="bootstrap-reboot.css.map" t="Include" />
+                  <e p="bootstrap-reboot.min.css" t="Include" />
+                  <e p="bootstrap-reboot.min.css.map" t="Include" />
+                  <e p="bootstrap.css" t="Include" />
+                  <e p="bootstrap.css.map" t="Include" />
+                  <e p="bootstrap.min.css" t="Include" />
+                  <e p="bootstrap.min.css.map" t="Include" />
+                </e>
+                <e p="js" t="Include">
+                  <e p="bootstrap.bundle.js" t="Include" />
+                  <e p="bootstrap.bundle.js.map" t="Include" />
+                  <e p="bootstrap.bundle.min.js" t="Include" />
+                  <e p="bootstrap.bundle.min.js.map" t="Include" />
+                  <e p="bootstrap.js" t="Include" />
+                  <e p="bootstrap.js.map" t="Include" />
+                  <e p="bootstrap.min.js" t="Include" />
+                  <e p="bootstrap.min.js.map" t="Include" />
+                </e>
+              </e>
+              <e p="LICENSE" t="Include" />
+            </e>
+            <e p="jquery" t="Include">
+              <e p="dist" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+                <e p="jquery.min.map" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+            <e p="jquery-validation" t="Include">
+              <e p="dist" t="Include">
+                <e p="additional-methods.js" t="Include" />
+                <e p="additional-methods.min.js" t="Include" />
+                <e p="jquery.validate.js" t="Include" />
+                <e p="jquery.validate.min.js" t="Include" />
+              </e>
+              <e p="LICENSE.md" t="Include" />
+            </e>
+            <e p="jquery-validation-unobtrusive" t="Include">
+              <e p="jquery.validate.unobtrusive.js" t="Include" />
+              <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+        </e>
       </e>
     </e>
   </component>
