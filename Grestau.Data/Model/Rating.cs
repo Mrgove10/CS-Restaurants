@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Grestau.Data.Model
 {
-    public class Ratings
+    public class Rating
     {
         public Guid ID { get; set; }
         public DateTime Date { get; set; }

@@ -12,5 +12,6 @@ namespace Grestau.Data.Model
         public string Comment { get; set; }
         public string Email { get; set; }
         public Adress Adress { get; set; }
+        public Rating Rating { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using Grestau.Data.Model;
 using NUnit.Framework;
+using System.Linq;
 
 namespace Grestau.Data.Test
 {
@@ -16,7 +17,9 @@ namespace Grestau.Data.Test
             using (var dbCtxt = new RestaurantContext())
             {
                 dbCtxt.Database.EnsureCreated();
-                //dbCtxt.Restaurants.ToList();
+                dbCtxt.Restaurants.ToList();
+                dbCtxt.Ratings.ToList();
+                dbCtxt.Adresses.ToList();
                 //Assert.IsTrue(true);
             }
         }

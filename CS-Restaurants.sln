@@ -18,6 +18,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exam", "Exam", "{A600B452-4164-4F9B-B316-E26D2EEC3F2B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grestau", "Grestau\Grestau.csproj", "{2552C28D-D237-459C-8A32-8A72DEDA6BA0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10AE8EA2-F29F-4908-8ED9-8D2C6BF28E9F} = {10AE8EA2-F29F-4908-8ED9-8D2C6BF28E9F}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Learning", "Learning", "{77103E28-41BB-440F-B5F6-BDFE9956F428}"
 EndProject
