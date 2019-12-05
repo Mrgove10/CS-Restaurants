@@ -27,6 +27,12 @@ namespace Grestau.Controllers
         {
             return View();
         }
+        
+        public IActionResult ListRestau()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

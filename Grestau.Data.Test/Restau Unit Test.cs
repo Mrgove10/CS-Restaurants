@@ -1,3 +1,4 @@
+using System;
 using Grestau.Data.Model;
 using NUnit.Framework;
 using System.Linq;
@@ -17,10 +18,17 @@ namespace Grestau.Data.Test
             using (var dbCtxt = new RestaurantContext())
             {
                 dbCtxt.Database.EnsureCreated();
-                dbCtxt.Restaurants.ToList();
-                dbCtxt.Ratings.ToList();
-                dbCtxt.Adresses.ToList();
-                //Assert.IsTrue(true);
+            }
+        }
+        
+        [Test]
+        public void AddValue()
+        {
+            using (var dbCtxt = new RestaurantContext())
+            {
+                dbCtxt.Database.EnsureCreated();
+                var r = new Rating(DateTime.Now, 3, "dsfjkdslufklsdjhflksdfjsdlh");
+                dbCtxt.Ratings.Add(r);
             }
         }
     }

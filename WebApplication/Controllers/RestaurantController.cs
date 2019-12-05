@@ -8,9 +8,9 @@ namespace WebApplication.Controllers
 {
     public class RestaurantController : Controller
     {
-        public IActionResult Restaurant()
+        /*public IActionResult Restaurant()
         {
-            return View();
-        }
+           // return View();
+        }*/
     }
 }

@@ -8,9 +8,18 @@ namespace Grestau.Data.Model
     public class Adress
     {
         [Required]
-        public Guid ID { get; set; }
-        public string Rue { get; set; }
-        public int CodePostal { get; set; }
-        public string Ville { get; set; }
+        public Guid ID;
+
+        public string Rue;
+        public int CodePostal;
+        public string Ville;
+
+        public Adress(string rue, int codePostal, string ville)
+        {
+            ID = new Guid();
+            Rue = rue;
+            CodePostal = codePostal;
+            Ville = ville;
+        }
     }
 }
