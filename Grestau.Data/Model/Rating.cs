@@ -8,10 +8,11 @@ namespace Grestau.Data.Model
     public class Rating
     {
         [Required]
-        public Guid ID;
-        public DateTime Date;
-        public int Stars;
-        public string Comment;
+        public Guid ID { get; set; }
+
+        public DateTime Date { get; set; }
+        public int Stars { get; set; }
+        public string Comment { get; set; }
 
         public Rating(DateTime date, int stars, string comment)
         {
@@ -19,6 +20,10 @@ namespace Grestau.Data.Model
             Date = date;
             Stars = stars;
             Comment = comment;
+        }
+
+        public Rating()
+        {
         }
     }
 }

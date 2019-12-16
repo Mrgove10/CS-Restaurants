@@ -5,9 +5,9 @@ namespace Grestau.Data.Model
     public class RestaurantContext : DbContext
     {
         private string conn;
-        public DbSet<Restaurant> Restaurants;
-        public DbSet<Adress> Adresses;
-        public DbSet<Rating> Ratings;
+        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Adress> Adresses { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         public RestaurantContext()
         {

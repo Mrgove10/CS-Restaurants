@@ -8,25 +8,25 @@ namespace Grestau.Data.Model
     public class Restaurant
     {
         [Required]
-        public Guid ID;
+        public Guid ID { get; set; }
 
         [Required]
-        public string Name;
+        public string Name { get; set; }
 
         [Required]
-        public string Phone;
+        public string Phone { get; set; }
 
         [Required]
-        public string Description;
+        public string Description { get; set; }
 
         [Required]
         [EmailAddress]
-        public string Email;
+        public string Email { get; set; }
 
         [Required]
-        public Adress Adress;
+        public Adress Adress { get; set; }
 
-        public Rating Rating;
+        public Rating Rating { get; set; }
 
         public Restaurant(string name, string phone, string description, string email, Adress adress, Rating rating)
         {
@@ -37,6 +37,10 @@ namespace Grestau.Data.Model
             Email = email;
             Adress = adress;
             Rating = rating;
+        }
+
+        public Restaurant()
+        {
         }
     }
 }

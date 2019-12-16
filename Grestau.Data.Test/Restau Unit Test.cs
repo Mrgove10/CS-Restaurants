@@ -1,7 +1,6 @@
 using System;
 using Grestau.Data.Model;
 using NUnit.Framework;
-using System.Linq;
 
 namespace Grestau.Data.Test
 {
@@ -28,7 +27,10 @@ namespace Grestau.Data.Test
             {
                 dbCtxt.Database.EnsureCreated();
                 var r = new Rating(DateTime.Now, 3, "dsfjkdslufklsdjhflksdfjsdlh");
-                dbCtxt.Ratings.Add(r);
+                var a = new Adress(12, "rue des oies",1121, "grenonoble");
+                var rest = new Restaurant("test", "2121212121", "i am a test restaurant", "a@com", a, r);
+                dbCtxt.Restaurants.Add(rest);
+                dbCtxt.SaveChanges();
             }
         }
     }
