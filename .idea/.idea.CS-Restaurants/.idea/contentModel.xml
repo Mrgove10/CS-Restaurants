@@ -206,6 +206,11 @@
             </e>
           </e>
         </e>
+        <e p="Services" t="Include">
+          <e p="DataService.cs" t="Include" />
+          <e p="GradeService.cs" t="Include" />
+          <e p="RestaurantService.cs" t="Include" />
+        </e>
       </e>
       <e p="Grestau.Data.Test" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -217,6 +222,7 @@
             </e>
           </e>
         </e>
+        <e p="Restau Data test.cs" t="Include" />
         <e p="Restau Unit Test.cs" t="Include" />
       </e>
       <e p="Learning" t="Include" />

@@ -28,7 +28,7 @@ namespace Grestau.Data.Model
 
         public Rating Rating { get; set; }
 
-        public Restaurant(string name, string phone, string description, string email, Adress adress, Rating rating)
+        public Restaurant(string name, string phone, string description, string email, Adress adress)
         {
             ID = new Guid();
             Name = name;
@@ -36,7 +36,6 @@ namespace Grestau.Data.Model
             Description = description;
             Email = email;
             Adress = adress;
-            Rating = rating;
         }
 
         public Restaurant()
