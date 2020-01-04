@@ -28,14 +28,24 @@ namespace Grestau.Data.Model
 
         public Rating Rating { get; set; }
 
-        public Restaurant(string name, string phone, string description, string email, Adress adress)
+        public Restaurant(string name, string phone, string description, string email, Adress address)
         {
             ID = new Guid();
             Name = name;
             Phone = phone;
             Description = description;
             Email = email;
-            Adress = adress;
+            Adress = address;
+        }
+        public Restaurant(string name, string phone, string description, string email, Adress address, Rating rating)
+        {
+            ID = new Guid();
+            Name = name;
+            Phone = phone;
+            Description = description;
+            Email = email;
+            Adress = address;
+            Rating = rating;
         }
 
         public Restaurant()

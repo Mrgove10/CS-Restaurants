@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Grestau.Data.Model;
+using Grestau.Data.Services;
 using NUnit.Framework;
 
 namespace Grestau.Data.Test
@@ -15,35 +16,35 @@ namespace Grestau.Data.Test
         [Test]
         public void ConnectToDatabase()
         {
-            using (var dbCtxt = new RestaurantContext())
-            {
-                dbCtxt.Database.EnsureCreated();
-            }
+            using var dbContext = new RestaurantContext();
+            dbContext.Database.EnsureCreated();
         }
 
         [Test]
-        public void AddValue()
+        public void AddRandomValues()
         {
-            using (var dbCtxt = new RestaurantContext())
+            using var dbContext = new RestaurantContext();
+            dbContext.Database.EnsureCreated();
+
+            for (int i = 0; i < 5; i++)
             {
-                dbCtxt.Database.EnsureCreated();
-                var a = new Adress(12, "rue des oies", 1121, "grenonoble");
-                var rest = new Restaurant("test", "2121212121", "i am a test restaurant", "a@com", a);
-                dbCtxt.Restaurants.Add(rest);
-                dbCtxt.SaveChanges();
+                var a = new Adress(Utils.RandomNumber(3), Utils.RandomString(10), Utils.RandomNumber(5), Utils.RandomString(10));
+                var r = new Rating(DateTime.Now, Utils.RandomNumber(1), Utils.RandomString(255));
+                var rest = new Restaurant(Utils.RandomString(10), Utils.RandomNumber(6).ToString(), Utils.RandomString(10), Utils.RandomEmail(10), a, r);
+                dbContext.Restaurants.Add(rest);
             }
+
+            dbContext.SaveChanges();
         }
 
         [Test]
         public void CountValues()
         {
-            using (var dbCtxt = new RestaurantContext())
-            {
-                dbCtxt.Database.EnsureCreated();
-                var count = dbCtxt.Restaurants.Count();
-                Console.WriteLine(count);
-                Assert.IsTrue(count == count);
-            }
+            using var dbContext = new RestaurantContext();
+            dbContext.Database.EnsureCreated();
+            var count = dbContext.Restaurants.Count();
+            Console.WriteLine(count);
+            Assert.IsTrue(count == count);
         }
     }
 }

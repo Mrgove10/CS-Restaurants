@@ -214,6 +214,7 @@
           <e p="DataService.cs" t="Include" />
           <e p="RatingService.cs" t="Include" />
           <e p="RestaurantService.cs" t="Include" />
+          <e p="Utils.cs" t="Include" />
         </e>
       </e>
       <e p="Grestau.Data.Test" t="IncludeRecursive">

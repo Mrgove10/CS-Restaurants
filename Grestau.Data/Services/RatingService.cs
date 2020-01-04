@@ -5,12 +5,11 @@ namespace Grestau.Data.Services
 {
     public class RatingService
     {
-        
         public void AddRating(DateTime date, int start, string comment, Restaurant restaurant)
         {
-            using var dbCtxt = new RestaurantContext();
+            using var dbContext = new RestaurantContext();
             Rating r = new Rating(date, start, comment);
-            dbCtxt.Restaurants.Find(restaurant).Rating = r;
+            dbContext.Restaurants.Find(restaurant).Rating = r;
         }
 
         public void UpdateRating()
