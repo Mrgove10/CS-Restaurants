@@ -13,6 +13,10 @@
     <e p="C:\Users\Adrien\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\nunit.engine.dll" t="Include" />
     <e p="C:\Users\Adrien\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\NUnit3.TestAdapter.dll" t="Include" />
     <e p="C:\Users\Adrien\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\NUnit3.TestAdapter.pdb" t="Include" />
+    <e p="C:\Users\Adrien\.nuget\packages\nunit3testadapter\3.16.0\build\netcoreapp2.1\nunit.engine.api.dll" t="Include" />
+    <e p="C:\Users\Adrien\.nuget\packages\nunit3testadapter\3.16.0\build\netcoreapp2.1\nunit.engine.dll" t="Include" />
+    <e p="C:\Users\Adrien\.nuget\packages\nunit3testadapter\3.16.0\build\netcoreapp2.1\NUnit3.TestAdapter.dll" t="Include" />
+    <e p="C:\Users\Adrien\.nuget\packages\nunit3testadapter\3.16.0\build\netcoreapp2.1\NUnit3.TestAdapter.pdb" t="Include" />
     <e p="C:\Users\Adrien\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Adrien\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_CS-Restaurants.1564332530.00" t="ExcludeRecursive" />
     <e p="D:\PERSO\EPSI\B3_(2019-2020)\DotNet\CS-Restaurants" t="IncludeFlat">
@@ -208,12 +212,14 @@
         </e>
         <e p="Services" t="Include">
           <e p="DataService.cs" t="Include" />
-          <e p="GradeService.cs" t="Include" />
+          <e p="RatingService.cs" t="Include" />
           <e p="RestaurantService.cs" t="Include" />
         </e>
       </e>
       <e p="Grestau.Data.Test" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="DataServiceTests.cs" t="Include" />
+        <e p="GeneralTests.cs" t="Include" />
         <e p="Grestau.Data.Test.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -222,8 +228,8 @@
             </e>
           </e>
         </e>
-        <e p="Restau Data test.cs" t="Include" />
-        <e p="Restau Unit Test.cs" t="Include" />
+        <e p="RatingServiceTests.cs" t="Include" />
+        <e p="RestaurantServiceTests.cs" t="Include" />
       </e>
       <e p="Learning" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
