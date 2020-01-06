@@ -12,7 +12,6 @@ namespace Grestau.Web
     public class RestaurantsController : Controller
     {
         private readonly RestaurantContext _context;
-        private RestaurantContext restaurantContext = new RestaurantContext();
         public RestaurantsController(RestaurantContext context)
         {
             _context = context;
