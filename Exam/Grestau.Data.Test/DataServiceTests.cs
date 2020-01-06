@@ -1,9 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
 using Grestau.Data;
 using Grestau.Data.Services;
 using NUnit.Framework;
 
 namespace Grestau.Data.Test
 {
+    [ExcludeFromCodeCoverage]
     public class DataRatingTest
     {
         private DataService _dataService;

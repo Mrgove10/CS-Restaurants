@@ -29,7 +29,7 @@ namespace Grestau.Data.Services
         /// Removes a restaurant from the database
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteRestaurant(string id) //todo : should i use and id or the restaurant object it self
+        public void DeleteRestaurant(string id) 
         {
             using var dbContext = new RestaurantContext();
             var restaurant = dbContext.Restaurants.Find(id);

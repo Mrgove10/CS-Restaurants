@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Grestau.Data.Model;
 using Grestau.Data.Services;
@@ -6,6 +7,7 @@ using NUnit.Framework;
 
 namespace Grestau.Data.Test
 {
+    [ExcludeFromCodeCoverage]
     public class GeneralTests
     {
         [SetUp]
