@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Grestau.Data.Model;
 
@@ -12,6 +10,7 @@ namespace Grestau.Web
     public class RestaurantsController : Controller
     {
         private readonly RestaurantContext _context;
+
         public RestaurantsController(RestaurantContext context)
         {
             _context = context;
@@ -46,7 +45,7 @@ namespace Grestau.Web
         {
             return View();
         }
-        
+
         // GET: Restaurants/Data
         public IActionResult Data()
         {
@@ -58,7 +57,8 @@ namespace Grestau.Web
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Phone,Description,Email")] Restaurant restaurant)
+        public async Task<IActionResult> Create([Bind("ID,Name,Phone,Description,Email")]
+            Restaurant restaurant)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +67,7 @@ namespace Grestau.Web
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(restaurant);
         }
 
@@ -83,6 +84,7 @@ namespace Grestau.Web
             {
                 return NotFound();
             }
+
             return View(restaurant);
         }
 
@@ -91,7 +93,8 @@ namespace Grestau.Web
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ID,Name,Phone,Description,Email")] Restaurant restaurant)
+        public async Task<IActionResult> Edit(Guid id, [Bind("ID,Name,Phone,Description,Email")]
+            Restaurant restaurant)
         {
             if (id != restaurant.ID)
             {
@@ -116,8 +119,10 @@ namespace Grestau.Web
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(restaurant);
         }
 
