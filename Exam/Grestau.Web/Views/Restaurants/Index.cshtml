@@ -25,6 +25,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating.Stars)
+        </th>
         <th></th>
     </tr>
     </thead>
@@ -44,6 +47,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.Rating.Stars)
+            </th>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |

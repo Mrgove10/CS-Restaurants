@@ -9,17 +9,20 @@ namespace Grestau.Web
 {
     public class RestaurantsController : Controller
     {
-        private readonly RestaurantContext _context;
+       // private readonly RestaurantContext _context;
 
-        public RestaurantsController(RestaurantContext context)
+        /*public RestaurantsController(RestaurantContext context)
         {
-            _context = context;
-        }
+            _context = context; //todo : should not be done 
+        }*/
 
         // GET: Restaurants
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Restaurants.ToListAsync());
+            return View(await _context.Restaurants
+                .Include(x => x.Adress)
+                .Include(x => x.Rating)
+                .ToListAsync());
         }
 
         // GET: Restaurants/Details/5
