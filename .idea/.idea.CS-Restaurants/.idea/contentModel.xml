@@ -42,6 +42,7 @@
             </e>
           </e>
           <e p="Services" t="Include">
+            <e p="AdressService.cs" t="Include" />
             <e p="DataService.cs" t="Include" />
             <e p="RatingService.cs" t="Include" />
             <e p="RestaurantService.cs" t="Include" />
