@@ -16,6 +16,7 @@ namespace Grestau.Data.Services
         public void ImportData(string json)
         {
             using var dbContext = new RestaurantContext();
+            dbContext.Database.EnsureCreated();
             var restaurantObj = JsonConvert.DeserializeObject<List<Restaurant>>(json);
             Console.WriteLine(restaurantObj.Count); //debug
             foreach (var rest in restaurantObj)
@@ -25,7 +26,7 @@ namespace Grestau.Data.Services
                 dbContext.Restaurants.Add(rest);
             }
 
-            dbContext.SaveChanges();
+            dbContext.SaveChangesAsync();
         }
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace Grestau.Data.Services
             dbContext.Database.ExecuteSqlRaw("DELETE FROM Restaurants");
             dbContext.Database.ExecuteSqlRaw("DELETE FROM Ratings");
             dbContext.Database.ExecuteSqlRaw("DELETE FROM Adresses");
+            dbContext.SaveChangesAsync();
         }
     }
 }

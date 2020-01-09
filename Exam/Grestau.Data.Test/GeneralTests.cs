@@ -20,6 +20,7 @@ namespace Grestau.Data.Test
         {
             using var dbContext = new RestaurantContext();
             dbContext.Database.EnsureCreated();
+            Assert.NotNull(dbContext.Restaurants);
         }
 
         [Test]
@@ -27,7 +28,7 @@ namespace Grestau.Data.Test
         {
             using var dbContext = new RestaurantContext();
             dbContext.Database.EnsureCreated();
-
+            var initialCount = dbContext.Restaurants.Count();
             for (int i = 0; i < 5; i++)
             {
                 var a = new Adress(Utils.RandomNumber(3), Utils.RandomString(10), Utils.RandomNumber(5), Utils.RandomString(10));
@@ -37,13 +38,13 @@ namespace Grestau.Data.Test
             }
 
             dbContext.SaveChanges();
+            Assert.IsTrue(initialCount + 5 == dbContext.Restaurants.Count());
         }
 
         [Test]
         public void CountValues()
         {
             using var dbContext = new RestaurantContext();
-            dbContext.Database.EnsureCreated();
             var count = dbContext.Restaurants.Count();
             Console.WriteLine(count);
             Assert.IsTrue(count == count);

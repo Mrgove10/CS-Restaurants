@@ -5,7 +5,7 @@ namespace Grestau.Data.Services
 {
     public class Utils
     {
-        private static Random random = new Random();
+        private static readonly Random Random = new Random();
 
         /// <summary>
         /// Generates a random alphanumeric string
@@ -16,8 +16,7 @@ namespace Grestau.Data.Services
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[Random.Next(s.Length)]).ToArray());
         }
 
         /// <summary>
@@ -29,8 +28,7 @@ namespace Grestau.Data.Services
         public static int RandomNumber(int length)
         {
             const string chars = "0123456789";
-            var r = new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
+            var r = new string(Enumerable.Repeat(chars, length).Select(s => s[Random.Next(s.Length)]).ToArray());
             return int.Parse(r);
         }
 
@@ -43,7 +41,7 @@ namespace Grestau.Data.Services
         public static string RandomEmail(int numberOfCharacters) // pass the number of characters for your email to be generated before '@'
         {
             var characters = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789";
-            var emailAddress = new string(Enumerable.Repeat(characters, numberOfCharacters).Select(s => s[random.Next(s.Length)]).ToArray());
+            var emailAddress = new string(Enumerable.Repeat(characters, numberOfCharacters).Select(s => s[Random.Next(s.Length)]).ToArray());
             emailAddress += "@test123.com";
             return emailAddress;
         }

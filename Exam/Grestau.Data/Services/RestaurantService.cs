@@ -1,9 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Grestau.Data.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Grestau.Data.Services
 {
-    public class Controller
+    public class RestaurantService
     {
+        /// <summary>
+        /// Gets the list of all the restaurants
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Restaurant>> GetAllRestaurant()
+        {
+            await using var dbContext = new RestaurantContext();
+            return await dbContext.Restaurants
+                .Include(x => x.Adress)
+                .Include(x => x.Rating)
+                .ToListAsync();
+        }
+
         /// <summary>
         /// Adds a restaurant from the database
         /// </summary>
@@ -11,43 +28,52 @@ namespace Grestau.Data.Services
         /// <param name="phone"></param>
         /// <param name="description"></param>
         /// <param name="email"></param>
-        /// <param name="adress"></param>
+        /// <param name="address"></param>
         public void AddRestaurant(
             string name,
             string phone,
             string description,
             string email,
-            Adress adress)
+            Adress address)
         {
             using var dbContext = new RestaurantContext();
-            var restau = new Restaurant(name, phone, description, email, adress);
+            var restau = new Restaurant(name, phone, description, email, address);
             dbContext.Restaurants.Add(restau);
-            dbContext.SaveChanges();
+            dbContext.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Adds a restaurant to the database
+        /// </summary>
+        /// <param name="restau"></param>
+        public void AddRestaurant(Restaurant restau) {
+            using var dbContext = new RestaurantContext();
+            dbContext.Restaurants.Add(restau);
+            dbContext.SaveChangesAsync();
         }
 
         /// <summary>
         /// Removes a restaurant from the database
         /// </summary>
-        /// <param name="id"></param>
-        public void DeleteRestaurant(string id) 
+        /// <param name="restau"></param>
+        public void DeleteRestaurant(Restaurant restau)
         {
             using var dbContext = new RestaurantContext();
-            var restaurant = dbContext.Restaurants.Find(id);
-            dbContext.Restaurants.Remove(restaurant);
-            dbContext.SaveChanges();
+            dbContext.Restaurants.Remove(restau);
+            dbContext.SaveChangesAsync();
         }
 
         /// <summary>
         /// Updates a restaurant in the database
         /// </summary>
-        /// <param name="originalRestaurant"></param>
         /// <param name="modifiedRestaurant"></param>
-        public void UpdateRestaurant(Restaurant originalRestaurant, Restaurant modifiedRestaurant)
+        public async Task<Restaurant> UpdateRestaurant(Restaurant modifiedRestaurant)
         {
-            if (originalRestaurant.Adress == modifiedRestaurant.Adress)
-            {
-                //no change
-            }
+            await using var dbContext = new RestaurantContext();
+            Console.WriteLine("updating restau");
+            dbContext.Entry(modifiedRestaurant).State = EntityState.Modified;
+            await dbContext.SaveChangesAsync();
+            return modifiedRestaurant;
         }
     }
 }

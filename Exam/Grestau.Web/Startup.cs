@@ -25,9 +25,8 @@ namespace Grestau.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var conn = @"Data Source=D:\PERSO\EPSI\B3_(2019-2020)\DotNet\CS-Restaurants\Exam\Grestau.Data\Files\Restau.db;";
             services.AddControllersWithViews();
-            services.AddDbContext<RestaurantContext>(Options => Options.UseSqlite(conn));
+            services.AddDbContext<RestaurantContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -31,6 +31,11 @@ namespace Grestau.Data.Services
             dbContext.SaveChanges();
         }
 
+        /// <summary>
+        /// updates the rating
+        /// </summary>
+        /// <param name="restaurant"></param>
+        /// <param name="newRating"></param>
         public void UpdateRating(Restaurant restaurant, Rating newRating)
         {
             using var dbContext = new RestaurantContext();

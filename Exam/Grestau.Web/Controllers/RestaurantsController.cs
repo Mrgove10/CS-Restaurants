@@ -4,25 +4,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Grestau.Data.Model;
+using Grestau.Data.Services;
 
 namespace Grestau.Web
 {
     public class RestaurantsController : Controller
     {
-       // private readonly RestaurantContext _context;
-
+        // private readonly RestaurantContext _context;
+        
         /*public RestaurantsController(RestaurantContext context)
         {
-            _context = context; //todo : should not be done 
+            _context = context; 
         }*/
 
+        private readonly RestaurantService _restaurantService = new RestaurantService();
         // GET: Restaurants
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Restaurants
-                .Include(x => x.Adress)
-                .Include(x => x.Rating)
-                .ToListAsync());
+            return View(await _restaurantService.GetAllRestaurant());
         }
 
         // GET: Restaurants/Details/5
@@ -33,8 +32,8 @@ namespace Grestau.Web
                 return NotFound();
             }
 
-            var restaurant = await _context.Restaurants
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var restaurantList = await _restaurantService.GetAllRestaurant();
+            var restaurant = restaurantList.FirstOrDefault(m => m.ID == id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -66,8 +65,7 @@ namespace Grestau.Web
             if (ModelState.IsValid)
             {
                 restaurant.ID = Guid.NewGuid();
-                _context.Add(restaurant);
-                await _context.SaveChangesAsync();
+                _restaurantService.AddRestaurant(restaurant);
                 return RedirectToAction(nameof(Index));
             }
 
@@ -82,7 +80,8 @@ namespace Grestau.Web
                 return NotFound();
             }
 
-            var restaurant = await _context.Restaurants.FindAsync(id);
+            var restaurantList = await _restaurantService.GetAllRestaurant();
+            var restaurant = restaurantList.Find(m => m.ID == id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -108,8 +107,7 @@ namespace Grestau.Web
             {
                 try
                 {
-                    _context.Update(restaurant);
-                    await _context.SaveChangesAsync();
+                    await _restaurantService.UpdateRestaurant(restaurant);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -137,8 +135,8 @@ namespace Grestau.Web
                 return NotFound();
             }
 
-            var restaurant = await _context.Restaurants
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var restaurantList = await _restaurantService.GetAllRestaurant();
+            var restaurant = restaurantList.FirstOrDefault(m => m.ID == id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -152,15 +150,17 @@ namespace Grestau.Web
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var restaurant = await _context.Restaurants.FindAsync(id);
-            _context.Restaurants.Remove(restaurant);
-            await _context.SaveChangesAsync();
+            //   var restaurant = await _context.Restaurants.FindAsync(id);
+            var restaurantList = await _restaurantService.GetAllRestaurant(); //.FirstOrDefaultAsync(m => m.ID == id);
+            var restaurant = restaurantList.Find(m => m.ID == id);
+
+            _restaurantService.DeleteRestaurant(restaurant);
             return RedirectToAction(nameof(Index));
         }
 
         private bool RestaurantExists(Guid id)
         {
-            return _context.Restaurants.Any(e => e.ID == id);
+            return _restaurantService.GetAllRestaurant().Result.Any(e => e.ID == id);
         }
     }
 }
