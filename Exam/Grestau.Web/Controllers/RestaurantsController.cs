@@ -11,13 +11,16 @@ namespace Grestau.Web
     public class RestaurantsController : Controller
     {
         // private readonly RestaurantContext _context;
-        
+
         /*public RestaurantsController(RestaurantContext context)
         {
             _context = context; 
         }*/
 
         private readonly RestaurantService _restaurantService = new RestaurantService();
+        private readonly AdressService _adressService = new AdressService();
+        private readonly RatingService _ratingService = new RatingService();
+
         // GET: Restaurants
         public async Task<IActionResult> Index()
         {
@@ -32,8 +35,7 @@ namespace Grestau.Web
                 return NotFound();
             }
 
-            var restaurantList = await _restaurantService.GetAllRestaurant();
-            var restaurant = restaurantList.FirstOrDefault(m => m.ID == id);
+            var restaurant = await _restaurantService.GetRestaurantById((Guid) id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -59,13 +61,19 @@ namespace Grestau.Web
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Phone,Description,Email")]
-            Restaurant restaurant)
+        public async Task<IActionResult> Create(
+            [Bind("Name,Phone,Description,Email")] Restaurant restaurant,
+            [Bind("Numero,Rue,CodePostal,Ville")] Adress adress
+        )
         {
             if (ModelState.IsValid)
             {
                 restaurant.ID = Guid.NewGuid();
                 _restaurantService.AddRestaurant(restaurant);
+
+                adress.ID = Guid.NewGuid();
+                _adressService.AddAdress(restaurant, adress);
+
                 return RedirectToAction(nameof(Index));
             }
 
@@ -80,8 +88,7 @@ namespace Grestau.Web
                 return NotFound();
             }
 
-            var restaurantList = await _restaurantService.GetAllRestaurant();
-            var restaurant = restaurantList.Find(m => m.ID == id);
+            var restaurant = await _restaurantService.GetRestaurantById((Guid) id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -95,7 +102,8 @@ namespace Grestau.Web
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ID,Name,Phone,Description,Email")]
+        public async Task<IActionResult> Edit(Guid id,
+            [Bind("ID,Name,Phone,Description,Email")]
             Restaurant restaurant)
         {
             if (id != restaurant.ID)
@@ -135,8 +143,7 @@ namespace Grestau.Web
                 return NotFound();
             }
 
-            var restaurantList = await _restaurantService.GetAllRestaurant();
-            var restaurant = restaurantList.FirstOrDefault(m => m.ID == id);
+            var restaurant = await _restaurantService.GetRestaurantById((Guid) id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -161,6 +168,24 @@ namespace Grestau.Web
         private bool RestaurantExists(Guid id)
         {
             return _restaurantService.GetAllRestaurant().Result.Any(e => e.ID == id);
+        }
+
+
+        // GET: Restaurants/Rating/5
+        public async Task<IActionResult> Rating(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var restaurant = await _restaurantService.GetRestaurantById((Guid) id);
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+
+            return View(restaurant);
         }
     }
 }

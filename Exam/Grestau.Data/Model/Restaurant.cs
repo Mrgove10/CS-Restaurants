@@ -23,7 +23,6 @@ namespace Grestau.Data.Model
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
         public Adress Adress { get; set; }
 
         public Rating Rating { get; set; }
@@ -37,6 +36,7 @@ namespace Grestau.Data.Model
             Email = email;
             Adress = address;
         }
+        
         public Restaurant(string name, string phone, string description, string email, Adress address, Rating rating)
         {
             ID = new Guid();

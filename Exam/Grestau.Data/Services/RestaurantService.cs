@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Grestau.Data.Model;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,31 @@ namespace Grestau.Data.Services
             return await dbContext.Restaurants
                 .Include(x => x.Adress)
                 .Include(x => x.Rating)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets the restaurant by an id
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Restaurant> GetRestaurantById(Guid ID)
+        {
+            await using var dbContext = new RestaurantContext();
+            return await dbContext.Restaurants
+                .Include(x => x.Adress)
+                .Include(x => x.Rating)
+                .FirstAsync(x => x.ID == ID);
+        }
+
+
+        //TODO : finish  and use me
+        public async Task<List<Restaurant>> GetTopFiveRestaurant()
+        {
+            await using var dbContext = new RestaurantContext();
+            return await dbContext.Restaurants
+                .Include(x => x.Adress)
+                .Include(x => x.Rating)
+                .OrderBy(x => x.Rating)
                 .ToListAsync();
         }
 
@@ -46,7 +72,8 @@ namespace Grestau.Data.Services
         /// Adds a restaurant to the database
         /// </summary>
         /// <param name="restau"></param>
-        public void AddRestaurant(Restaurant restau) {
+        public void AddRestaurant(Restaurant restau)
+        {
             using var dbContext = new RestaurantContext();
             dbContext.Restaurants.Add(restau);
             dbContext.SaveChangesAsync();
@@ -59,6 +86,8 @@ namespace Grestau.Data.Services
         public void DeleteRestaurant(Restaurant restau)
         {
             using var dbContext = new RestaurantContext();
+            dbContext.Adresses.Remove(restau.Adress); // 
+            dbContext.Ratings.Remove(restau.Rating); // thse two line insure that all the information of the restaurant is removed correctly
             dbContext.Restaurants.Remove(restau);
             dbContext.SaveChangesAsync();
         }

@@ -7,24 +7,24 @@
 <h1>Create</h1>
 
 <h4>Restaurant</h4>
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control"/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
+                <input asp-for="Phone" class="form-control"/>
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <input asp-for="Description" class="form-control"/>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,8 +32,29 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+            <hr>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="Adress.Numero" class="control-label"></label>
+                <input asp-for="Adress.Numero" class="form-control"/>
+                <span asp-validation-for="Adress.Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress.Rue" class="control-label"></label>
+                <input asp-for="Adress.Rue" class="form-control"/>
+                <span asp-validation-for="Adress.Rue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress.CodePostal" class="control-label"></label>
+                <input asp-for="Adress.CodePostal" class="form-control"/>
+                <span asp-validation-for="Adress.CodePostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress.Ville" class="control-label"></label>
+                <input asp-for="Adress.Ville" class="form-control"/>
+                <span asp-validation-for="Adress.Ville" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary"/>
             </div>
         </form>
     </div>
@@ -44,5 +65,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
