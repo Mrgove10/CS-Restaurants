@@ -12,13 +12,8 @@ namespace Grestau.Data.Services
         public void AddAdress(Restaurant restaurant, Adress adress)
         {
             using var dbContext = new RestaurantContext();
-            dbContext.Restaurants.Find(restaurant.ID).Adress = adress;
-            dbContext.SaveChangesAsync();
-        }
-
-        public void RemoveAdress()
-        {
-            
+            restaurant.Adress = adress;
+            dbContext.SaveChanges();
         }
     }
 }

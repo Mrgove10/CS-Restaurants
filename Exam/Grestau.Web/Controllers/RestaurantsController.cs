@@ -75,7 +75,7 @@ namespace Grestau.Web
                 _adressService.AddAdress(restaurant, adress);
 
                 return RedirectToAction(nameof(Index));
-            }
+            }    
 
             return View(restaurant);
         }
@@ -115,7 +115,7 @@ namespace Grestau.Web
             {
                 try
                 {
-                    await _restaurantService.UpdateRestaurant(restaurant);
+                    _restaurantService.UpdateRestaurant(restaurant);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
