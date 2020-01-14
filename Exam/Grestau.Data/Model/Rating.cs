@@ -11,7 +11,10 @@ namespace Grestau.Data.Model
         public Guid ID { get; set; }
 
         public DateTime Date { get; set; }
+
+        [Range(0, 10)]
         public int Stars { get; set; }
+
         public string Comment { get; set; }
 
         public Rating(DateTime date, int stars, string comment)

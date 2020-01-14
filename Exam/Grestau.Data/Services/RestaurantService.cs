@@ -23,6 +23,21 @@ namespace Grestau.Data.Services
         }
 
         /// <summary>
+        /// Return the top 5 restaurants buy rating
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Restaurant>> GetTopFiveRestaurant()
+        {
+            await using var dbContext = new RestaurantContext();
+            return await dbContext.Restaurants
+                .Include(x => x.Adress)
+                .Include(x => x.Rating)
+                .OrderByDescending(x => x.Rating.Stars)
+                .Take(5)
+                .ToListAsync();
+        }
+
+        /// <summary>
         /// Gets the restaurant base on an id
         /// </summary>
         /// <param name="ID"></param>
@@ -34,18 +49,6 @@ namespace Grestau.Data.Services
                 .Include(x => x.Adress)
                 .Include(x => x.Rating)
                 .FirstAsync(x => x.ID == ID);
-        }
-
-
-        //TODO : finish  and use me
-        public async Task<List<Restaurant>> GetTopFiveRestaurant()
-        {
-            await using var dbContext = new RestaurantContext();
-            return await dbContext.Restaurants
-                .Include(x => x.Adress)
-                .Include(x => x.Rating)
-                .OrderBy(x => x.Rating)
-                .ToListAsync();
         }
 
         /// <summary>

@@ -43,6 +43,17 @@ namespace Grestau.Web
 
             return View(restaurant);
         }
+        // GET: Restaurants/Data
+        public async Task<IActionResult> Home()
+        {
+            return View(await _restaurantService.GetTopFiveRestaurant());
+        }
+        
+        // GET: Restaurants/Data
+        public async Task<IActionResult> Ratings()
+        {
+            return View(await _restaurantService.GetTopFiveRestaurant());
+        }
 
         // GET: Restaurants/Create
         public IActionResult Create()
@@ -187,5 +198,25 @@ namespace Grestau.Web
 
             return View(restaurant);
         }
+        
+        /*    [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Rating(
+            [Bind("ID,Name,Phone,Description,Email")] Rating rating
+        )
+        {
+            if (ModelState.IsValid)
+            {
+                
+                _ratingService.AddRating(_restaurantService.GetRestaurantById(id));
+
+                if(rating.ID)
+                
+
+                return RedirectToAction(nameof(Index));
+            }    
+
+            return View(restaurant);
+        }*/
     }
 }
