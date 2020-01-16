@@ -90,8 +90,17 @@ namespace Grestau.Data.Services
         public void DeleteRestaurant(Restaurant restau)
         {
             using var dbContext = new RestaurantContext();
-            dbContext.Adresses.Remove(restau.Adress); // 
-            dbContext.Ratings.Remove(restau.Rating); // thse two line insure that all the information of the restaurant is removed correctly
+            // thse two line insure that all the information of the restaurant is removed correctly
+            if (restau.Adress != null)
+            {
+                dbContext.Adresses.Remove(restau.Adress);
+            }
+
+            if (restau.Rating != null)
+            {
+                dbContext.Ratings.Remove(restau.Rating);
+            }
+
             dbContext.Restaurants.Remove(restau);
             dbContext.SaveChanges();
         }
@@ -100,13 +109,11 @@ namespace Grestau.Data.Services
         /// Updates a restaurant in the database
         /// </summary>
         /// <param name="modifiedRestaurant"></param>
-        public Restaurant UpdateRestaurant(Restaurant modifiedRestaurant)
+        public void UpdateRestaurant(Restaurant modifiedRestaurant)
         {
             using var dbContext = new RestaurantContext();
-            Console.WriteLine("updating restau");
             dbContext.Entry(modifiedRestaurant).State = EntityState.Modified;
             dbContext.SaveChanges();
-            return modifiedRestaurant;
         }
     }
 }

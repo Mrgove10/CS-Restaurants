@@ -22,7 +22,7 @@ namespace Grestau.Data.Model
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-
+        
         public Adress Adress { get; set; }
 
         public Rating Rating { get; set; }

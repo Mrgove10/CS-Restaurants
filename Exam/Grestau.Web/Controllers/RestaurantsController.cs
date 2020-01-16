@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Grestau.Data.Model;
 using Grestau.Data.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace Grestau.Web
 {
@@ -20,6 +24,8 @@ namespace Grestau.Web
         private readonly RestaurantService _restaurantService = new RestaurantService();
         private readonly AdressService _adressService = new AdressService();
         private readonly RatingService _ratingService = new RatingService();
+
+        private readonly DataService _dataService = new DataService();
 
         // GET: Restaurants
         public async Task<IActionResult> Index()
@@ -43,12 +49,13 @@ namespace Grestau.Web
 
             return View(restaurant);
         }
+
         // GET: Restaurants/Data
         public async Task<IActionResult> Home()
         {
             return View(await _restaurantService.GetTopFiveRestaurant());
         }
-        
+
         // GET: Restaurants/Data
         public async Task<IActionResult> Ratings()
         {
@@ -67,6 +74,29 @@ namespace Grestau.Web
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Data(IFormFile file)
+        {
+            var filePaths = new List<string>();
+
+
+            // full path to file in temp location
+            var filePath = Path.GetTempFileName(); //we are using Temp file name just for the example. Add your own file path.
+            filePaths.Add(filePath);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                _dataService.ImportData(stream.ToString());
+            }
+
+
+            // process uploaded files
+            // Don't rely on or trust the FileName property without validation.
+            return Ok();
+//            return Ok(new {count = files.Count, size, filePaths});
+        }
+
+
         // POST: Restaurants/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -79,14 +109,13 @@ namespace Grestau.Web
         {
             if (ModelState.IsValid)
             {
-                restaurant.ID = Guid.NewGuid();
+                //restaurant.ID = Guid.NewGuid();
                 _restaurantService.AddRestaurant(restaurant);
 
-                adress.ID = Guid.NewGuid();
                 _adressService.AddAdress(restaurant, adress);
 
                 return RedirectToAction(nameof(Index));
-            }    
+            }
 
             return View(restaurant);
         }
@@ -114,8 +143,9 @@ namespace Grestau.Web
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id,
-            [Bind("ID,Name,Phone,Description,Email")]
-            Restaurant restaurant)
+            [Bind("ID,Name,Phone,Description,Email")] Restaurant restaurant,
+            [Bind("Numero,Rue,Ville,CodePostal")] Adress adress
+            )
         {
             if (id != restaurant.ID)
             {
@@ -126,7 +156,17 @@ namespace Grestau.Web
             {
                 try
                 {
-                    _restaurantService.UpdateRestaurant(restaurant);
+                    //  _restaurantService.UpdateRestaurant(restaurant);
+                   if (restaurant.Adress == null)
+                    {
+                        // here we do not do rating.ID = Guid.NewGuid(); because it is generated automaticly when added
+                       adress.ID = new Guid();
+                        _adressService.AddAdress(restaurant, adress);
+                    }
+                    else
+                    {
+                        _restaurantService.UpdateRestaurant(restaurant);
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -198,25 +238,28 @@ namespace Grestau.Web
 
             return View(restaurant);
         }
-        
-        /*    [HttpPost]
+
+        // GET: Restaurants/Rating/5
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Rating(
-            [Bind("ID,Name,Phone,Description,Email")] Rating rating
+            [Bind("ID")] Restaurant restaurant,
+            [Bind("ID,Date,Stars,Comment")] Rating rating
         )
         {
-            if (ModelState.IsValid)
+            var r = await _restaurantService.GetRestaurantById(restaurant.ID);
+
+            if (r.Rating == null)
             {
-                
-                _ratingService.AddRating(_restaurantService.GetRestaurantById(id));
+                // here we do not do rating.ID = Guid.NewGuid(); because it is generated automaticly when added
+                _ratingService.AddRating(restaurant, rating);
+            }
+            else
+            {
+                _ratingService.UpdateRating(rating);
+            }
 
-                if(rating.ID)
-                
-
-                return RedirectToAction(nameof(Index));
-            }    
-
-            return View(restaurant);
-        }*/
+            return View();
+        }
     }
 }

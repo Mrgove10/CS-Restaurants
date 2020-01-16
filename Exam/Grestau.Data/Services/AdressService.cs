@@ -1,4 +1,7 @@
+using System;
 using Grestau.Data.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Grestau.Data.Services
 {
@@ -12,7 +15,9 @@ namespace Grestau.Data.Services
         public void AddAdress(Restaurant restaurant, Adress adress)
         {
             using var dbContext = new RestaurantContext();
-            restaurant.Adress = adress;
+            dbContext.Restaurants.Find(restaurant.ID).Adress = adress;
+           // var a = dbContext.Adresses.Add(adress);
+           // restaurant.Adress = a;
             dbContext.SaveChanges();
         }
     }

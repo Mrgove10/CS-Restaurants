@@ -16,7 +16,7 @@ namespace Grestau.Data.Services
         {
             using var dbContext = new RestaurantContext();
             dbContext.Restaurants.Find(restaurant.ID).Rating = rating;
-            dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Grestau.Data.Services
         {
             using var dbContext = new RestaurantContext();
             dbContext.Restaurants.Find(restaurant.ID).Rating = null;
-            dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Grestau.Data.Services
         {
             using var dbContext = new RestaurantContext();
             dbContext.Entry(newRating).State = EntityState.Modified;
-            dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
         }
     }
 }
