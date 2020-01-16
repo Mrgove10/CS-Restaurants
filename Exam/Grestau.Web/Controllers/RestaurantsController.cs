@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -75,7 +74,7 @@ namespace Grestau.Web
         }
 
         [HttpPost]
-        public async Task<IActionResult> Data(IFormFile file)
+        public IActionResult Data(IFormFile file)
         {
             var filePaths = new List<string>();
 
@@ -102,7 +101,7 @@ namespace Grestau.Web
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(
+        public IActionResult Create(
             [Bind("Name,Phone,Description,Email")] Restaurant restaurant,
             [Bind("Numero,Rue,CodePostal,Ville")] Adress adress
         )
@@ -142,7 +141,7 @@ namespace Grestau.Web
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id,
+        public IActionResult Edit(Guid id,
             [Bind("ID,Name,Phone,Description,Email")] Restaurant restaurant,
             [Bind("Numero,Rue,Ville,CodePostal")] Adress adress
             )

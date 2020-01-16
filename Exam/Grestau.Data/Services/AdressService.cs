@@ -1,7 +1,4 @@
-using System;
 using Grestau.Data.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Grestau.Data.Services
 {

@@ -1,5 +1,3 @@
-using System;
-
 namespace Grestau.Web.Models
 {
     public class ErrorViewModel

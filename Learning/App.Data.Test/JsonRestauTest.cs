@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using App.Data.JsonRepository;
@@ -10,24 +9,24 @@ namespace App.Data.Test
     public class JsonRestauTest
     {
         JsonRestaurantRepository srv = new JsonRestaurantRepository();
-        private List<Restaurant> result;
+        private List<Restaurant> _result;
 
         [SetUp]
         public void Setup()
         {
-            result = srv.LoadData(@".\Ressources\restaurants.net.json");
+            _result = srv.LoadData(@".\Ressources\restaurants.net.json");
         }
 
         [Test]
         public void TestLoadData()
         {
-            Assert.IsTrue(result.Count == 25357);
+            Assert.IsTrue(_result.Count == 25357);
         }
 
         [Test]
         public void Test_Pizz()
         {
-            Assert.IsTrue(result.FindAll(x =>
+            Assert.IsTrue(_result.FindAll(x =>
                               x.name.ToLower().Contains("pizz") &&
                               x.borough.Equals("Manhattan")).Count == 437);
         }
@@ -35,7 +34,7 @@ namespace App.Data.Test
         [Test]
         public void Test_PizzGrade()
         {
-            Assert.IsTrue(result.FindAll(x =>
+            Assert.IsTrue(_result.FindAll(x =>
                               x.name.ToLower().Contains("pizz") &&
                               x.borough.Equals("Manhattan") &&
                               x.grades.Any(g => g.grade == "A" && g.score <= 8)).Count == 274);
