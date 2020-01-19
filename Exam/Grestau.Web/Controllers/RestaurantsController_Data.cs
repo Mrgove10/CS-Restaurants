@@ -18,6 +18,16 @@ namespace Grestau.Web
             return View();
         }
 
+        public ActionResult saveData()
+        {
+            Console.WriteLine("savingg");
+            var data = _dataService.ExportData();
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(data);
+            var output = new FileContentResult(bytes, "application/octet-stream");
+            output.FileDownloadName = "GrestauExport.json";
+
+            return output;
+        }
 
         /// <summary>
         /// post of the data page

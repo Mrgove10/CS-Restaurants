@@ -41,7 +41,8 @@ namespace Grestau.Data.Test
         [Test]
         public void ExportTest()
         {
-            _dataService.ExportData();
+            var v = _dataService.ExportData();
+            Assert.IsNotEmpty(v);
         }
     }
 }

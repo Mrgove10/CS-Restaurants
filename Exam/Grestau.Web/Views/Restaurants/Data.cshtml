@@ -9,21 +9,16 @@
 {
     <form method="post">
         <!--<input type="file" name="file">-->
-        <textarea name="dataraw" rows="10" cols="25"></textarea>
+        <textarea name="dataraw" rows="10" cols="75"></textarea>
         <br>
         <input type="submit" class="btn btn-primary" value="Import data" accept="application/json">
     </form>
 }
 <hr/>
-<h4>Export to json</h4>
-<button type="button" class="btn btn-primary">Export data</button>
+<h4>Export Data to json</h4>
+<a class="btn btn-primary" asp-action="saveData">Export Data</a>
 <hr/>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
-

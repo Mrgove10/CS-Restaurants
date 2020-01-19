@@ -32,7 +32,7 @@ namespace Grestau.Data.Services
         /// <summary>
         /// Exports the data as a json
         /// </summary>
-        public void ExportData()
+        public string ExportData()
         {
             using var dbContext = new RestaurantContext();
             var restaurant = dbContext.Restaurants
@@ -40,7 +40,7 @@ namespace Grestau.Data.Services
                 .Include(m => m.Rating)
                 .ToList();
             var restaurantToJson = JsonConvert.SerializeObject(restaurant);
-            Console.WriteLine(restaurantToJson);
+            return restaurantToJson;
         }
 
         /// <summary>
