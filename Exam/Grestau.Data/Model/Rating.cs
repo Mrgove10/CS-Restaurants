@@ -13,6 +13,7 @@ namespace Grestau.Data.Model
         [Range(0, 10)]
         public int Stars { get; set; }
 
+        [MaxLength(255)]
         public string Comment { get; set; }
 
         public Rating(DateTime date, int stars, string comment)

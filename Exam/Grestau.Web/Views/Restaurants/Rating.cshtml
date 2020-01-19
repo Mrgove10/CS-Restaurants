@@ -34,11 +34,22 @@
         @Html.DisplayFor(model => model.Email)
     </dd>
     <dt class="col-sm-2">
+         @Html.DisplayNameFor(model => model.Adress)
+    </dt>
+    <dd class="col-sm-10">
+        @{
+            var fullAdress = Model.Adress.Numero + " " + Model.Adress.Rue + " " + Model.Adress.CodePostal + " " + Model.Adress.Ville;
+            @Html.DisplayFor(m => fullAdress)
+        }
+    </dd>
+
+    <!--
+    <dt class="col-sm-2">
         @Html.DisplayNameFor(model => model.Adress.Numero)
     </dt>
     <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Adress.Numero)
-    </dd>
+    @Html.DisplayFor(model => model.Adress.Numero)
+    
     <dt class="col-sm-2">
         @Html.DisplayNameFor(model => model.Adress.Rue)
     </dt>
@@ -57,6 +68,7 @@
     <dd class="col-sm-10">
         @Html.DisplayFor(model => model.Adress.CodePostal)
     </dd>
+    -->
 </dl>
 <hr/>
 <div class="row">
@@ -77,7 +89,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Rating.Comment" class="control-label"></label>
-                <input asp-for="Rating.Comment" class="form-control"/>
+                <textarea rows="10" cols="100" asp-for="Rating.Comment" class="form-control"></textarea>
                 <span asp-validation-for="Rating.Comment" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -12,9 +12,6 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Rating.Date)
         </th>
         <th>
@@ -33,9 +30,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
             <th>
                 @Html.DisplayFor(modelItem => item.Rating.Date)
             </th>
@@ -43,7 +37,10 @@
                 @Html.DisplayFor(modelItem => item.Rating.Stars)
             </th>
             <th>
-                @Html.DisplayFor(modelItem => item.Rating.Comment)
+                @{
+                    var comment = item.Rating.Comment.Substring(0, 30) + " ...";
+                    @Html.DisplayFor(m => comment)
+                }
             </th>
             <td>
                 <a asp-action="Rating" asp-route-id="@item.ID">Edit Rating</a>

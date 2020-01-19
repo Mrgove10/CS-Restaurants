@@ -49,6 +49,12 @@ namespace Grestau.Web
                     name: "default",
                     pattern: "{controller=Restaurants}/{action=Home}/{id?}");
             });
+            
+            //ensures the database is available and created on tha app satrtup
+            using (var dbContext = new RestaurantContext())
+            {
+                dbContext.Database.EnsureCreated();
+            }
         }
     }
 }

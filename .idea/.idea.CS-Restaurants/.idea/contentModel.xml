@@ -50,6 +50,7 @@
           </e>
         </e>
         <e p="Grestau.Data.Test" t="IncludeRecursive">
+          <e p="AdressServiceTest.cs" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="DataServiceTests.cs" t="Include" />
           <e p="GeneralTests.cs" t="Include" />

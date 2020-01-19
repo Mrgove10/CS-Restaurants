@@ -36,7 +36,6 @@ namespace Grestau.Data.Test
         [Test]
         public void DeleteRatingTest()
         {
-            //todo : should make a fake rating first to be sure if the test is lanched individualy
             _ratingService.RemoveRating(_mainRestaurant);
             _mainRestaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
             Assert.IsTrue(_mainRestaurant.Rating == null);
@@ -49,7 +48,7 @@ namespace Grestau.Data.Test
             Rating modr = new Rating(DateTime.Now, 5, "bonjour je suis la modification");
             _ratingService.UpdateRating(modr);
             Assert.IsTrue(_mainRestaurant.Rating.Comment == "bonjour je suis la modification");
-        }
+        }     
         
         [TearDown]
         public void TearDown()

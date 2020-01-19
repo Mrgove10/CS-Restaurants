@@ -13,8 +13,6 @@ namespace Grestau.Data.Services
         {
             using var dbContext = new RestaurantContext();
             dbContext.Restaurants.Find(restaurant.ID).Adress = adress;
-           // var a = dbContext.Adresses.Add(adress);
-           // restaurant.Adress = a;
             dbContext.SaveChanges();
         }
     }

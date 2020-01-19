@@ -16,13 +16,10 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.DisplayNameFor(model => model.Adress)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Rating.Date)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Rating.Stars)
@@ -38,19 +35,20 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Phone)
+                @{
+                    var fullAdress = item.Adress.Numero + " " + item.Adress.Rue + " " + item.Adress.CodePostal + " " + item.Adress.Ville;
+                    @Html.DisplayFor(m => fullAdress)
+                    ;
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Rating.Date.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <th>
                 @Html.DisplayFor(modelItem => item.Rating.Stars)
-            </th>
+            </td>
             <td>
-                <a asp-action="Rating" asp-route-id="@item.ID">Edit Rating</a> |
+              <!-- <a asp-action="Rating" asp-route-id="@item.ID">Edit Rating</a> -->
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
