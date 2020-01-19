@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Grestau.Data.Model;
 using Grestau.Data.Services;
-using Microsoft.AspNetCore.Http;
 
 namespace Grestau.Web
 {
@@ -18,13 +12,11 @@ namespace Grestau.Web
         private readonly RatingService _ratingService = new RatingService();
         private readonly DataService _dataService = new DataService();
 
-        // GET: Restaurants
-        public async Task<IActionResult> Index()
-        {
-            return View(await _restaurantService.GetAllRestaurant());
-        }
-
-        // GET: Restaurants/Details/5
+        /// <summary>
+        /// Get details
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -41,14 +33,31 @@ namespace Grestau.Web
             return View(restaurant);
         }
 
+        /// <summary>
+        /// Get index 
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> Index()
+        {
+            return View(await _restaurantService.GetAllRestaurant());
+        }
+
+        /// <summary>
+        /// Get Home Page
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Home()
         {
             return View(await _restaurantService.GetTopFiveRestaurant());
         }
 
+        /// <summary>
+        /// Get ratings page
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Ratings()
         {
-            return View(await _restaurantService.GetTopFiveRestaurant());
+            return View(await _restaurantService.GetAllRestaurant());
         }
     }
 }

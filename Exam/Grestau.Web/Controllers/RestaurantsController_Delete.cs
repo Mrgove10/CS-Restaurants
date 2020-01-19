@@ -1,14 +1,17 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Grestau.Data.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Grestau.Web
 {
     public partial class RestaurantsController
     {
-        // GET: Restaurants/Delete/5
+        /// <summary>
+        /// Get delete page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -25,7 +28,11 @@ namespace Grestau.Web
             return View(restaurant);
         }
 
-        // POST: Restaurants/Delete/5
+        /// <summary>
+        /// Post delete
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)

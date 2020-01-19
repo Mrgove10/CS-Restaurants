@@ -7,7 +7,7 @@ namespace Grestau.Data.Model
     {
         [Required]
         public Guid ID { get; set; }
-
+        
         public DateTime Date { get; set; }
 
         [Range(0, 10)]

@@ -70,8 +70,12 @@
           <e p="appsettings.json" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="Controllers" t="Include">
-            <e p="DataController.cs" t="Include" />
             <e p="RestaurantsController.cs" t="Include" />
+            <e p="RestaurantsController_Create.cs" t="Include" />
+            <e p="RestaurantsController_Data.cs" t="Include" />
+            <e p="RestaurantsController_Delete.cs" t="Include" />
+            <e p="RestaurantsController_Edit.cs" t="Include" />
+            <e p="RestaurantsController_Rating.cs" t="Include" />
           </e>
           <e p="Grestau.Web.csproj" t="IncludeRecursive" />
           <e p="Models" t="Include">

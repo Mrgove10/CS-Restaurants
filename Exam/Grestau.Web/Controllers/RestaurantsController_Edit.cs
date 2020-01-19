@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using Grestau.Data.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +8,11 @@ namespace Grestau.Web
 {
     public partial class RestaurantsController
     {
-        // GET: Restaurants/Edit/5
+        /// <summary>
+        /// Get edit page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -27,14 +28,19 @@ namespace Grestau.Web
 
             return View(restaurant);
         }
-        
-        // POST: Restaurants/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        /// <summary>
+        /// Post edit page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="restaurant"></param>
+        /// <param name="adress"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Guid id,
-            [Bind("ID,Name,Phone,Description,Email")] Restaurant restaurant,
+            [Bind("ID,Name,Phone,Description,Email")]
+            Restaurant restaurant,
             [Bind("Numero,Rue,Ville,CodePostal")] Adress adress
         )
         {
@@ -76,7 +82,5 @@ namespace Grestau.Web
 
             return View(restaurant);
         }
-        
-        
     }
 }
