@@ -39,7 +39,7 @@ namespace Grestau.Web
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Guid id,
-            [Bind("ID,Name,Phone,Description,Email")]
+            [Bind("ID,Name,Phone,Description,Email")] //TODO : not working here
             Restaurant restaurant,
             [Bind("Numero,Rue,Ville,CodePostal")] Adress adress
         )

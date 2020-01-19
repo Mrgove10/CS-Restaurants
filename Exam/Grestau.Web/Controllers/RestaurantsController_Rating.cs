@@ -45,7 +45,6 @@ namespace Grestau.Web
 
             if (r.Rating == null)
             {
-                // here we do not do rating.ID = Guid.NewGuid(); because it is generated automaticly when added
                 _ratingService.AddRating(restaurant, rating);
             }
             else
@@ -53,7 +52,7 @@ namespace Grestau.Web
                 _ratingService.UpdateRating(rating);
             }
 
-            return View();
+            return View(r);
         }
     }
 }

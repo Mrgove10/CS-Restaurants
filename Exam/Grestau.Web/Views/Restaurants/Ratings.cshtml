@@ -38,8 +38,15 @@
             </th>
             <th>
                 @{
-                    var comment = item.Rating.Comment.Substring(0, 30) + " ...";
-                    @Html.DisplayFor(m => comment)
+                    if (item.Rating?.Comment != null)
+                    {
+                        var comment = item.Rating.Comment.Substring(0, item.Rating.Comment.Length > 31 ? 31 : item.Rating.Comment.Length);
+                        if (comment.Length > 30)
+                        {
+                            comment += "...";
+                        }
+                        @Html.DisplayFor(m => comment)
+                    }
                 }
             </th>
             <td>

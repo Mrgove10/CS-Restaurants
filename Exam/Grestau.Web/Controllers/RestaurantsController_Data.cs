@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,21 +15,23 @@ namespace Grestau.Web
             return View();
         }
 
+        /// <summary>
+        /// Returns data to the user
+        /// </summary>
+        /// <returns></returns>
         public ActionResult saveData()
         {
-            Console.WriteLine("savingg");
             var data = _dataService.ExportData();
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(data);
             var output = new FileContentResult(bytes, "application/octet-stream");
-            output.FileDownloadName = "GrestauExport.json";
-
+            output.FileDownloadName = "GrestauExport_" + DateTime.Now + ".json";
             return output;
         }
 
         /// <summary>
         /// post of the data page
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="form"></param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult Data(IFormCollection form)
