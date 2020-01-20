@@ -1,7 +1,12 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=168287f1_002D11b7_002D48b6_002D80e4_002D6fcee2b233b6_0023Testing/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=31b7dc71_002D716f_002D4f02_002D908c_002Dcb0d5723d3ab_0023App_002EQuery/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=4701ba71_002D8b48_002D4b89_002Da2f8_002D4733e908eaf6_0023App_002EData/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=81dcca6d_002Dcd40_002D415c_002D9aef_002D2c29fc41404d_0023App_002EQuery_002ETest/@EntryIndexedValue">True</s:Boolean>
 	
 	
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=8bb273a8_002D762b_002D4ace_002D9cb3_002Da00c5a0da23d_0023CS_002DRestaurants/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=a1425774_002D6bb2_002D4629_002D9ab4_002D22f71bfd117b_0023App_002EData_002ETest/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Grestau/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=modddd/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=restau/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
