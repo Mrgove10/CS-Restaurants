@@ -39,39 +39,37 @@ namespace Grestau.Web
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Guid id,
-            [Bind("ID,Name,Phone,Description,Email")] //TODO : not working here
-            Restaurant restaurant,
+            [Bind("ID,Name,Phone,Description,Email")] Restaurant restaurantform,
             [Bind("Numero,Rue,Ville,CodePostal")] Adress adress
         )
         {
-            if (id != restaurant.ID)
+            var restaurantorg = _restaurantService.GetRestaurantById(id);
+            if (id != restaurantorg.ID)
             {
                 return NotFound();
             }
-          /*  else
-            {
-                restaurant = _restaurantService.GetRestaurantById(id);
-            }*/
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     //  _restaurantService.UpdateRestaurant(restaurant);
-                    if (restaurant.Adress == null)
+                    if (restaurantorg.Adress == null)
                     {
                         // here we do not do rating.ID = Guid.NewGuid(); because it is generated automaticly when added
                         adress.ID = new Guid();
-                        _adressService.AddAdress(restaurant, adress);
+                        _adressService.AddAdress(restaurantform, adress);
                     }
                     else
                     {
-                        _restaurantService.UpdateRestaurant(restaurant);
+                        restaurantform.Adress = restaurantorg.Adress;
+                        restaurantform.Rating = restaurantform.Rating;
+                        _restaurantService.UpdateRestaurant(restaurantform);
                     }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RestaurantExists(restaurant.ID))
+                    if (!RestaurantExists(restaurantform.ID))
                     {
                         return NotFound();
                     }
@@ -84,7 +82,7 @@ namespace Grestau.Web
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(restaurant);
+            return View(restaurantform);
         }
     }
 }
