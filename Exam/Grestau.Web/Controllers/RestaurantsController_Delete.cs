@@ -12,14 +12,14 @@ namespace Grestau.Web
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> Delete(Guid? id)
+        public IActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var restaurant = await _restaurantService.GetRestaurantById((Guid) id);
+            var restaurant = _restaurantService.GetRestaurantById((Guid) id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -35,9 +35,9 @@ namespace Grestau.Web
         /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public IActionResult DeleteConfirmed(Guid id)
         {
-            var restaurantList = await _restaurantService.GetAllRestaurant();
+            var restaurantList = _restaurantService.GetAllRestaurant();
             var restaurant = restaurantList.Find(m => m.ID == id);
 
             _restaurantService.DeleteRestaurant(restaurant);
@@ -46,7 +46,7 @@ namespace Grestau.Web
 
         private bool RestaurantExists(Guid id)
         {
-            return _restaurantService.GetAllRestaurant().Result.Any(e => e.ID == id);
+            return _restaurantService.GetAllRestaurant().Any(e => e.ID == id);
         }
 
     }

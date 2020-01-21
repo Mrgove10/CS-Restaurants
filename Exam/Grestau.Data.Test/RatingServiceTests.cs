@@ -29,7 +29,7 @@ namespace Grestau.Data.Test
             Rating r = new Rating(DateTime.Now, 5, "bonjour je suis le commentaire");
             _ratingService.AddRating(_mainRestaurant, r);
             var rateid = r.ID;
-            _mainRestaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
+            _mainRestaurant = _restaurantService.GetAllRestaurant().Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
             Assert.IsTrue(_mainRestaurant.Rating.ID == rateid);
         }
 
@@ -37,14 +37,14 @@ namespace Grestau.Data.Test
         public void DeleteRatingTest()
         {
             _ratingService.RemoveRating(_mainRestaurant);
-            _mainRestaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
+            _mainRestaurant = _restaurantService.GetAllRestaurant().Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
             Assert.IsTrue(_mainRestaurant.Rating == null);
         }
 
         [Test]
         public void UpdateRatingTest()
         {
-            _mainRestaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
+            _mainRestaurant = _restaurantService.GetAllRestaurant().Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
             Rating modr = new Rating(DateTime.Now, 5, "bonjour je suis la modification");
             _ratingService.UpdateRating(modr);
             Assert.IsTrue(_mainRestaurant.Rating.Comment == "bonjour je suis la modification");

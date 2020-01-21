@@ -24,7 +24,7 @@ namespace Grestau.Data.Test
             _restaurantService.AddRestaurant(r);
             var restId = r.ID; //this is put after because the GUID seams to be only created when the object is inserted into the database
             
-            var restaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == restId);
+            var restaurant = _restaurantService.GetAllRestaurant().Find(m => m.ID == restId);
             Assert.IsTrue(restaurant.Name == r.Name);
             Assert.IsTrue(restaurant.Phone == r.Phone);
             Assert.IsTrue(restaurant.Description == r.Description);
@@ -41,11 +41,11 @@ namespace Grestau.Data.Test
             _restaurantService.AddRestaurant(r);
             var restId = r.ID;//see comment on the test above
             
-            var restaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == restId);
+            var restaurant = _restaurantService.GetAllRestaurant().Find(m => m.ID == restId);
             Assert.IsTrue(restaurant != null);
 
             _restaurantService.DeleteRestaurant(r); //deletes the restaurant 
-            var restaurant2 = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == restId);
+            var restaurant2 = _restaurantService.GetAllRestaurant().Find(m => m.ID == restId);
             Assert.IsTrue(restaurant2 == null);
         }
 
@@ -57,13 +57,13 @@ namespace Grestau.Data.Test
             _restaurantService.AddRestaurant(r);
             var restId = r.ID; //see comment on the test above
 
-            var restaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == restId);
+            var restaurant = _restaurantService.GetAllRestaurant().Find(m => m.ID == restId);
             Assert.IsTrue(restaurant.Description == "bonjour je suis la modification");
 
             Restaurant modr = restaurant;
             modr.Description = "modddd";
             _restaurantService.UpdateRestaurant(modr); //deletes the restaurant 
-            var restaurant2 = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == restId);
+            var restaurant2 = _restaurantService.GetAllRestaurant().Find(m => m.ID == restId);
             Assert.IsTrue(restaurant2.Description == "modddd");
             
             _restaurantService.DeleteRestaurant(r); //deletes it to clean the database

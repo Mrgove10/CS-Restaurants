@@ -13,28 +13,28 @@ namespace Grestau.Data.Services
         /// Gets the list of all the restaurants
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Restaurant>> GetAllRestaurant()
+        public List<Restaurant> GetAllRestaurant()
         {
-            await using var dbContext = new RestaurantContext();
-            return await dbContext.Restaurants
+            using var dbContext = new RestaurantContext();
+            return dbContext.Restaurants
                 .Include(x => x.Adress)
                 .Include(x => x.Rating)
-                .ToListAsync();
+                .ToList();
         }
 
         /// <summary>
         /// Return the top 5 restaurants buy rating
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Restaurant>> GetTopFiveRestaurant()
+        public List<Restaurant> GetTopFiveRestaurant()
         {
-            await using var dbContext = new RestaurantContext();
-            return await dbContext.Restaurants
+            using var dbContext = new RestaurantContext();
+            return dbContext.Restaurants
                 .Include(x => x.Adress)
                 .Include(x => x.Rating)
                 .OrderByDescending(x => x.Rating.Stars)
                 .Take(5)
-                .ToListAsync();
+                .ToList();
         }
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace Grestau.Data.Services
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public async Task<Restaurant> GetRestaurantById(Guid ID)
+        public Restaurant GetRestaurantById(Guid ID)
         {
-            await using var dbContext = new RestaurantContext();
-            return await dbContext.Restaurants
+            using var dbContext = new RestaurantContext();
+            return dbContext.Restaurants
                 .Include(x => x.Adress)
                 .Include(x => x.Rating)
-                .FirstAsync(x => x.ID == ID);
+                .First(x => x.ID == ID);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Grestau.Data.Services
         /// <param name="description"></param>
         /// <param name="email"></param>
         /// <param name="address"></param>
-        public async void AddRestaurant(
+        public void AddRestaurant(
             string name,
             string phone,
             string description,
@@ -69,7 +69,7 @@ namespace Grestau.Data.Services
             using var dbContext = new RestaurantContext();
             var restau = new Restaurant(name, phone, description, email, address);
             dbContext.Restaurants.Add(restau);
-            await dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
         }
 
         /// <summary>

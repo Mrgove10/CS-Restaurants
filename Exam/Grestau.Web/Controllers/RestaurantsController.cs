@@ -17,14 +17,14 @@ namespace Grestau.Web
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> Details(Guid? id)
+        public IActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var restaurant = await _restaurantService.GetRestaurantById((Guid) id);
+            var restaurant = _restaurantService.GetRestaurantById((Guid) id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -37,27 +37,27 @@ namespace Grestau.Web
         /// Get index 
         /// </summary>
         /// <returns></returns>
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _restaurantService.GetAllRestaurant());
+            return View(_restaurantService.GetAllRestaurant());
         }
 
         /// <summary>
         /// Get Home Page
         /// </summary>
         /// <returns></returns>
-        public async Task<IActionResult> Home()
+        public IActionResult Home()
         {
-            return View(await _restaurantService.GetTopFiveRestaurant());
+            return View(_restaurantService.GetTopFiveRestaurant());
         }
 
         /// <summary>
         /// Get ratings page
         /// </summary>
         /// <returns></returns>
-        public async Task<IActionResult> Ratings()
+        public IActionResult Ratings()
         {
-            return View(await _restaurantService.GetAllRestaurant());
+            return View(_restaurantService.GetAllRestaurant());
         }
     }
 }

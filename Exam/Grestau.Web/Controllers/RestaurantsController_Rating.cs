@@ -12,14 +12,14 @@ namespace Grestau.Web
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> Rating(Guid? id)
+        public IActionResult Rating(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var restaurant = await _restaurantService.GetRestaurantById((Guid) id);
+            var restaurant = _restaurantService.GetRestaurantById((Guid) id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -36,12 +36,12 @@ namespace Grestau.Web
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Rating(
+        public IActionResult Rating(
             [Bind("ID")] Restaurant restaurant,
             [Bind("ID,Date,Stars,Comment")] Rating rating
         )
         {
-            var r = await _restaurantService.GetRestaurantById(restaurant.ID);
+            var r = _restaurantService.GetRestaurantById(restaurant.ID);
 
             if (r.Rating == null)
             {

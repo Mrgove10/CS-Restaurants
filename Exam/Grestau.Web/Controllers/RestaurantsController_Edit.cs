@@ -13,14 +13,14 @@ namespace Grestau.Web
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> Edit(Guid? id)
+        public IActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var restaurant = await _restaurantService.GetRestaurantById((Guid) id);
+            var restaurant = _restaurantService.GetRestaurantById((Guid) id);
             if (restaurant == null)
             {
                 return NotFound();
@@ -48,6 +48,10 @@ namespace Grestau.Web
             {
                 return NotFound();
             }
+          /*  else
+            {
+                restaurant = _restaurantService.GetRestaurantById(id);
+            }*/
 
             if (ModelState.IsValid)
             {

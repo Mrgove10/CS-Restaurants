@@ -27,7 +27,7 @@ namespace Grestau.Data.Test
             var a = new Adress(15,"ru du 15",38500,"paris");
             _adressService.AddAdress(_mainRestaurant,a);
             var asdressid = a.ID;
-            _mainRestaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
+         //   _mainRestaurant = _restaurantService.GetAllRestaurant().Result.Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
             Assert.IsTrue(_mainRestaurant.Rating.ID == asdressid);
         }
         
