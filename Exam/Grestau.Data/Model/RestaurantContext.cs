@@ -4,6 +4,8 @@ namespace Grestau.Data.Model
 {
     public class RestaurantContext : DbContext
     {
+        //TODO: Change me !
+        
         private string conn = @"Data Source=D:\PERSO\EPSI\B3_(2019-2020)\DotNet\CS-Restaurants\Exam\Grestau.Data\Files\Restau.db;";
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Adress> Adresses { get; set; }

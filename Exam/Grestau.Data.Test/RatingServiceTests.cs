@@ -44,9 +44,10 @@ namespace Grestau.Data.Test
         [Test]
         public void UpdateRatingTest()
         {
-            _mainRestaurant = _restaurantService.GetAllRestaurant().Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
             Rating modr = new Rating(DateTime.Now, 5, "bonjour je suis la modification");
+            _ratingService.AddRating(_mainRestaurant, modr);
             _ratingService.UpdateRating(modr);
+            _mainRestaurant = _restaurantService.GetAllRestaurant().Find(m => m.ID == _mainRestaurant.ID);// this updates the restaurant to have the correct rating id
             Assert.IsTrue(_mainRestaurant.Rating.Comment == "bonjour je suis la modification");
         }     
         
